@@ -74,7 +74,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent @OptIn(ExperimentalFoundationApi::class) {
             val toptext = listOf("Тест на скорость нажатия", "Тест на визуальный анализ")
-            val information = listOf("Пися", "Попа")
+            val information = listOf("Информация о первом тесте", "Информация о втором тесте")
             val pagerState = rememberPagerState { toptext.size }
             val scope = rememberCoroutineScope()
             val snackbarHostState = remember { SnackbarHostState() }
