@@ -76,6 +76,7 @@ class MainActivity : ComponentActivity() {
             val mContext = LocalContext.current
             val toptext = listOf("Тест на скорость нажатия", "Тест на визуальный анализ")
             val information = listOf("Информация о первом тесте", "Информация о втором тесте")
+            val testclasses = listOf(FirstTest::class.java, SecondTest::class.java)
             val pagerState = rememberPagerState { toptext.size }
             val scope = rememberCoroutineScope()
             val snackbarHostState = remember { SnackbarHostState() }
@@ -111,23 +112,27 @@ class MainActivity : ComponentActivity() {
                                 painterResource(id = R.drawable.back),
                                 contentScale = ContentScale.FillBounds
                             ))
-                        Text(toptext[page], fontSize = 60.sp, modifier= Modifier
-                            .padding(it)
-                            .padding(20.dp),
-                            fontFamily = FontFamily(Font(R.font.alumnisans)),
-                            color = Color.DarkGray, textAlign = TextAlign.Center,
-                            style = TextStyle(shadow = Shadow(Color.LightGray , Offset(10.0f, 16.5f), 1.0f)))
-                        Button(onClick = {mContext.startActivity(Intent(mContext, FirstTest::class.java))},
-                            elevation = ButtonDefaults.buttonElevation(defaultElevation = 20.dp, pressedElevation = 2.dp),
-                            modifier = Modifier.offset(110.dp, 350.dp).height(80.dp).width(180.dp),
-                            colors = ButtonDefaults.buttonColors(containerColor = Color.Yellow, contentColor = Color.Black),
-                            border = BorderStroke(3.dp, Color.Black)
-                        ){
-                            Text("Начать", fontSize = 25.sp)
+                        Column{
+                            Text(toptext[page], fontSize = 60.sp, modifier= Modifier
+                                .padding(it)
+                                .padding(20.dp)
+                                .align(Alignment.CenterHorizontally),
+                                fontFamily = FontFamily(Font(R.font.alumnisans)),
+                                color = Color.DarkGray, textAlign = TextAlign.Center,
+                                style = TextStyle(shadow = Shadow(Color.LightGray , Offset(10.0f, 16.5f), 1.0f)))
+                            Button(onClick = {mContext.startActivity(Intent(mContext, testclasses[page]))},
+                                elevation = ButtonDefaults.buttonElevation(defaultElevation = 20.dp, pressedElevation = 2.dp),
+                                modifier = Modifier.height(80.dp).width(180.dp).align(Alignment.CenterHorizontally).offset(y = 100.dp),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color.Yellow, contentColor = Color.Black),
+                                border = BorderStroke(3.dp, Color.Black)
+                            ){
+                                Text("Начать", fontSize = 25.sp)
                             }
                         }
+                        }
+
+                        }
+
                     }
                 }
             }
-        }
-
