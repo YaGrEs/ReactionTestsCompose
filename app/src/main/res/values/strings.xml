@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">JTPCMPS</string>
+    <string name="title_activity_first_test">FirstTest</string>
+    <string name="title_activity_second_test">SecondTest</string>
 </resources>
